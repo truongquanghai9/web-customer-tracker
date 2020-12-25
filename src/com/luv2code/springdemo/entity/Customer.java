@@ -1,10 +1,13 @@
 package com.luv2code.springdemo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,6 +34,10 @@ public class Customer {
 	
 	@Column(name="email")
 	private String email;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="customer_detail_id")
+	private CustomerDetail customerDetail;
 	
 	public Customer() {
 		
@@ -77,6 +84,15 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	// customerDetail
+	public CustomerDetail getCustomerDetail() {
+		return customerDetail;
+	}
+
+	public void setCustomerDetail(CustomerDetail customerDetail) {
+		this.customerDetail = customerDetail;
 	}
 
 	@Override

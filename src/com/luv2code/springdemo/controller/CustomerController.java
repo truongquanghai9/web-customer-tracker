@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.luv2code.springdemo.entity.Customer;
+import com.luv2code.springdemo.entity.CustomerDetail;
 import com.luv2code.springdemo.service.CustomerService;
 
 @Controller
@@ -57,6 +58,8 @@ public class CustomerController {
 		
 		// create model attribute to bind form data
 		Customer newCustomer = new Customer();
+		CustomerDetail customerDetail = new CustomerDetail();
+		newCustomer.setCustomerDetail(customerDetail);
 		
 		theModel.addAttribute("customers",newCustomer);
 		return "customer-form";
@@ -76,13 +79,18 @@ public class CustomerController {
 	}
 	
 	// Main Page
+	@GetMapping("/view")
+	public String view(@RequestParam("customerId") int id, Model theModel) {
+		Customer theCustomer = customerService.getCustomer(id);
+		theModel.addAttribute("customers", theCustomer);
+		return "view-customer";
+	}
 	
 	@GetMapping("/showFormForUpdate") 
 	public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) {
 		
 		// get the customer from the service
 		Customer theCustomer = customerService.getCustomer(theId);
-		
 		// set customer as a model attribute to pre-populate the form
 		theModel.addAttribute("customers", theCustomer);
 		

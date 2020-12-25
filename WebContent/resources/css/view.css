@@ -1,0 +1,40 @@
+#view-container {
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+#page-title-header {
+	padding: 0 0 0 20px;
+	color: 	#696969;
+}
+
+
+section {
+	background-color: #A9A9A9;
+	display: flex;
+	flex-direction: row; 
+	margin-bottom: 20px;
+}
+section p {
+	display: flex;
+	padding-left: 20px;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+section h4 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0 0 20px;
+}
+#viewPage-back-to-list {
+	padding: 0 0 0 10px;
+}
+.active {
+	background: #c2c2c2;
+}
+$('a').click(function() {
+	$(this).removeClass('active');
+	$(this).addClass('active');
+})

@@ -64,6 +64,12 @@
 				<!-- Loop over and print our customers -->
 				<c:forEach var="tempCustomer" items="${customers}">
 				
+				
+					<!-- Construct an "view" link with customer id-->				
+					<c:url var="viewLink" value="/customer/view">
+						<c:param name="customerId" value="${tempCustomer.id}"/>
+					</c:url>				
+				
 					<!-- construct an "update" link with customer id -->
 					<c:url var="updateLink" value="/customer/showFormForUpdate">
 						<c:param name="customerId" value="${tempCustomer.id}"/>
@@ -81,13 +87,14 @@
 						
 						<!-- Display the update and delete link -->
 						<td>
+							<a href="${viewLink}">View</a>
+							|
 							<a href="${updateLink}">Update</a>
 							|
 							<a href="${deleteLink}"
 							   onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 						</td>
 					</tr>
-				
 				</c:forEach>
 			
 			</table>
