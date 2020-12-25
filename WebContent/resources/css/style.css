@@ -25,6 +25,10 @@ tr {
 
 .error {
 	color: red;
+	margin-left:10px;
+	display: flex;
+	flex-direction: row;
+	white-space: nowrap;
 }
  
 tr:nth-child(even) {background: #FFFFFF}

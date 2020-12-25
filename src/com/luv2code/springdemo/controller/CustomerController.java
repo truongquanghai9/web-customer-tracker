@@ -40,7 +40,6 @@ public class CustomerController {
 		
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-		
 	}
 	
 	@GetMapping("/list")
@@ -60,15 +59,14 @@ public class CustomerController {
 		Customer newCustomer = new Customer();
 		CustomerDetail customerDetail = new CustomerDetail();
 		newCustomer.setCustomerDetail(customerDetail);
-		
-		theModel.addAttribute("customers",newCustomer);
+		theModel.addAttribute("customers", newCustomer);
 		return "customer-form";
 	}
 	
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@Valid @ModelAttribute("customers") Customer newCustomer, BindingResult bindingResult) {
+	public String saveCustomer(@ModelAttribute("customers") @Valid Customer newCustomer, BindingResult customerBindingResult, @Valid CustomerDetail customerDetail, BindingResult customerDetailBindingResult) {
 		
-		if (bindingResult.hasErrors()) {
+		if (customerBindingResult.hasErrors() || customerDetailBindingResult.hasErrors()) {
 			return "customer-form";
 		}
 		else {

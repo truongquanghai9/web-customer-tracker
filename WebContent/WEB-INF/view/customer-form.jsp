@@ -24,7 +24,7 @@
 			<h2>CRM - Customer Relationship Manager</h2>
 		</div>
 	</div>
-	
+		
 	<div id="container">
 		<h3>Save Customer</h3>
 		<form:form action="saveCustomer" modelAttribute="customers" method="POST">
@@ -50,11 +50,13 @@
 					<tr>
 						<td><label>Email:</label></td>
 						<td><form:input path="email" /></td>
+						<td><form:errors class="error" path="email" /></td>
 					</tr>
 					
 					<tr>
 						<td><label>Age:</label></td>
 						<td><form:input path="customerDetail.age" /></td>
+						<td><form:errors class="error" path="customerDetail.age"/></td>
 					</tr>
 					
 					<tr>

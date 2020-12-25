@@ -20,9 +20,10 @@ public class CustomerDetail {
 	@Column(name="id")
 	private int id;
 	
-	@Min(value=0, message="Invalid")
-	@Max (value=120, message = "Invalid")
+	
 	@Column(name="age")
+	@Min(value=0, message="Invalid age!")
+	@Max(value=120, message ="Invalid age!")
 	private Integer age;
 	
 	@Column(name="hobby")
